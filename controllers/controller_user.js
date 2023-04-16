@@ -67,14 +67,6 @@ export const logIn = async(req,res,next) =>
     // test : password matches ?
     if ( password !== user_exist.password ) { return res.status(401).json( { status : "401" , msg : "password doesn't match"} ); }
 
-    req.session.regenerate( function (error) {
-        if (error) { res.status(500).json({ status : 500, message : "Erreur interne"});}
-        else {
-            req.session.user_exist = user_exist;
-            return res.status(200).json({ status : 200, message : "Login et mot de passe accepté"})
-        }
-    })
-
     return res.status(200).json( { status : "200" , user_exist } );
 }
 
@@ -122,10 +114,16 @@ export const modifyUser = async(req,res,next) =>
     let user;
     const {firstname, lastname, password} = req.body;
 
-    try { user = await User.findOneAndUpdate( {username : username}, {firstname : firstname, lastname : lastname, password : password }) }
+    try { user = await User.findOne( {username : username}) }
     catch(error) { return res.status(500).json({ status : "500", msg : "Can't connect to the database" }); }
 
     if (! user ) { return res.status(404).json( { status : "404" , msg : "User doesn't exist"} ); }
+
+    try { user = await User.updateOne( {username : username}, {firstname : firstname, lastname : lastname, password : password }) }
+    catch(error) { return res.status(500).json({ status : "500", msg : "Can't connect to the database" }); }
+
+    try { user = await User.findOne( {username : username}) }
+    catch(error) { return res.status(500).json({ status : "500", msg : "Can't connect to the database" }); }
 
     return res.status(200).json( { status : "200" , user } );
 }
