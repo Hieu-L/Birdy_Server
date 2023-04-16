@@ -1,5 +1,5 @@
 import User from "../model/User.js";
-
+import session from "express-session";
 
 /* ======== get ALL USERS in the DATABASE ======== */
 
@@ -53,6 +53,7 @@ export const signUp = async(req,res,next) =>
 
 export const logIn = async(req,res,next) =>
 {
+
     // retrieve info sent from client side
     const {username, password } = req.body;
     
@@ -65,6 +66,14 @@ export const logIn = async(req,res,next) =>
 
     // test : password matches ?
     if ( password !== user_exist.password ) { return res.status(401).json( { status : "401" , msg : "password doesn't match"} ); }
+
+    req.session.regenerate( function (error) {
+        if (error) { res.status(500).json({ status : 500, message : "Erreur interne"});}
+        else {
+            req.session.user_exist = user_exist;
+            return res.status(200).json({ status : 200, message : "Login et mot de passe accepté"})
+        }
+    })
 
     return res.status(200).json( { status : "200" , user_exist } );
 }
@@ -81,23 +90,45 @@ export const deleteUser = async(req,res,next) =>
     console.log(username);
     // test : username exists ?
     let user_exist ;
-    try { user_exist = await User.findOne({ username }); }
+    try { user_exist = await User.findOneAndDelete({ username }); }
     catch(error) { return res.status(500).json({ status : "500", msg : "can't connect to the database" }); }
 
     if (! user_exist ) { return res.status(404).json( { status : "404" , msg : "username doesn't exist"} ); }
-    
-    try { let ok = await User.deleteOne({ username : username }); }
-    catch(error) { return res.status(500).json({ status : "500", msg : "can't connect to the database" }); }
 
     return res.status(200).json( { status : "200" , msg : "account deleted successfully" } );
 }
 
 
+/* ======== GET AN USER'S INFORMATION ======== */
 
+export const getUser = async(req,res,next) =>
+{
+    const username = req.params.username;
+    let user;
 
+    try { user = await User.findOne( {username : username} ); }
+    catch(error) { return res.status(500).json({ status : "500", msg : "Can't connect to the database" }); }
 
+    if (! user ) { return res.status(404).json( { status : "404" , msg : "User doesn't exist"} ); }
 
+    return res.status(200).json( { status : "200" , user } );
+}
 
+/* ======== MODIFY AN USER'S INFORMATION ======== */
+
+export const modifyUser = async(req,res,next) =>
+{
+    const username = req.params.username;
+    let user;
+    const {firstname, lastname, password} = req.body;
+
+    try { user = await User.findOneAndUpdate( {username : username}, {firstname : firstname, lastname : lastname, password : password }) }
+    catch(error) { return res.status(500).json({ status : "500", msg : "Can't connect to the database" }); }
+
+    if (! user ) { return res.status(404).json( { status : "404" , msg : "User doesn't exist"} ); }
+
+    return res.status(200).json( { status : "200" , user } );
+}
 
 
 
