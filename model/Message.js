@@ -21,7 +21,7 @@ const Schema = mongoose.Schema ;
 
 
 /* Schema to specify the data type, name, restrictions of a Friendship */
-const friendshipSchema = ({
+const messageSchema = ({
     
     // creator of the message
     author : { 
@@ -44,7 +44,7 @@ const friendshipSchema = ({
 
 
 /* export the Schema of Message to MongoDB */
-export default mongoose.model("Friend", friendshipSchema);
+export default mongoose.model("Message", messageSchema);
 
 
 
