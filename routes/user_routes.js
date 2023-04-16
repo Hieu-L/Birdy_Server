@@ -14,6 +14,7 @@ from '../controllers/controller_user.js';
 /* ====== Assigning controllers to the routes ====== */
 const router = express.Router();
 
+
 // [1] GET api/user/all : get all users in Database
 router.get("/all", getAllUsers);
 
