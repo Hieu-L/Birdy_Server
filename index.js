@@ -3,6 +3,7 @@ import express from 'express';
 import mongoose from 'mongoose'; 
 import user_router from './routes/user_routes.js';
 import friendship_router from './routes/friendship_routes.js';
+import message_router from './routes/message_routes.js';
 
 
 
@@ -12,14 +13,15 @@ const app = express();
 app.use(express.json());
 app.use("/api/user",user_router);
 app.use("/apifriends/user",friendship_router);
-
+app.use("/apimessages/user",message_router);
+app.use(function (req,res,next) { res.status(404).send("this page doesnt exist") } );
 
 
 /* ==============[ STARTING THE SERVER ]============== */
 
 mongoose
     /* connect to the database : MONGODB */
-    .connect('mongodb+srv://admin:tegvym212@cluster0.2yd8so4.mongodb.net/?retryWrites=true&w=majority')
+    .connect('mongodb+srv://gabirakt:VqXyiGDrnAZNAjML@birdy-cluster.zbd4nrp.mongodb.net/test')
 
     /* start listening to port 8000 : msg to and from the server will pass thru here */
     .then( ()=>app.listen(8000) )
