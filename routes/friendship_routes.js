@@ -14,15 +14,15 @@ const router = express.Router();
 
 
 // [1] POST apifriends/user/{username}/friends : create a Friendship
-router.post("/id_:username/friends", addFriend);
+router.post("/:username/friends", addFriend);
 
 // [2] GET apifriends/user/{username}/friends : get all friends of a User
-router.get("/id_:username/friends", getListFriends);
+router.get("/:username/friends", getListFriends);
 
 // [3] GET apifriends/user/{username}/friends/{friendid} : get relationship status of username concerning friend_username
-router.get("/id_:username/friends/id_:friend_username",getFriendRelationship);
+router.get("/:username/friends/:friend_username",getFriendRelationship);
 
 // [4] DELETE apifriends/user/{username}/friends/{friendid} : remove the friendship of username -> friend_username
-router.delete("/id_:username/friends/id_:friend_username",deleteFriend);
+router.delete("/:username/friends/:friend_username",deleteFriend);
 
 export default router;

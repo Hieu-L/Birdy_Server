@@ -14,19 +14,20 @@ const router = express.Router();
 
 
 // [1] POST /apimessages/user/username/messages : create a new message
-router.post("/id_:username/messages", createMessage);
+router.post("/apimessages/user/:username/messages", createMessage);
 
 // [2] GET /apimessages/user/username/messages : get all messages of username
-router.get("/id_:username/messages", getUserMessage);
+router.get("/apimessages/user/:username/messages", getUserMessage);
 
 // [3] GET /apimessages/user/messages : get all messages in the database
-router.get("/messages", getAllMessage);
+router.get("/apimessages/user/messages", getAllMessage);
 
 // [4] DELETE /apimessages/user/id_messageid : get all messages in the database
-router.delete("/msgid_:messageid", deleteMessage);
+router.get("/apimessages/user/id_:messageid", deleteMessage);
 
 
 export default router;
+
 
 
 
