@@ -6,16 +6,16 @@ import User from "../model/User.js";
 export const createMessage = async(req,res,next) => 
 {
     const username = req.params.username;
-    const { date, text } = req.body;
+    const { author, date, text } = req.body;
 
     // test : does username exist?
     let username_ok;
     try { username_ok = await User.findOne( { username : username} ); }
     catch(error) { return res.status(500).json({ status : "500", msg : "can't connect to the database" }); }
 
-    if ( !date || !text ) { return res.status(400).json( { status : "400" , msg : "missing information"} ); } 
+    if ( !author || !date || !text ) { return res.status(400).json( { status : "400" , msg : "missing information"} ); } 
     
-    const newMessage = new Message( { author : username , date : date, text : text } );
+    const newMessage = new Message( { author, date, text } );
 
     try { let ok = await newMessage.save(); }
     catch(error) { return res.status(500).json( { status : "500" , msg : "can't connect to database"} ); }
@@ -53,7 +53,7 @@ export const getAllMessage = async(req,res,next) =>
 {
     let messages ;
     
-    try { messages = await Message.find(); }
+    try { messages = await Message.find( { author : username } ); }
     catch(error) { return res.status(500).json( { status : "500" , msg : "can't connect to database"} ); }
 
     return res.status(200).json( { status : "200", messages } );
@@ -65,12 +65,13 @@ export const getAllMessage = async(req,res,next) =>
 
 export const deleteMessage = async(req,res,next) => 
 {
-    const id = req.params.messageid ; 
+    const id = req.params.id ; 
 
-    try { let ok = await Message.findOneAndDelete( { _id : id } ); }
+    try { let ok = await Message.findOneAndDelete( { author : id } ); }
     catch(error) { return res.status(500).json( { status : "500" , msg : "can't connect to database"} ); }
 
     return res.status(200).json( { status : "200", msg : "Deleted successfully"} );
 }
+
 
 

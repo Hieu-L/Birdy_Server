@@ -22,21 +22,17 @@ export const addFriend = async(req,res,next) =>
     try { friend_ok = await User.findOne( {username : friend_username} ); }
     catch(error) { return res.status(500).json({ status : "500", msg : "can't connect to the database" }); }
 
-    if ( !friend_ok ) { return res.status(404).json( { status : "404" , msg : "friend username doesn't exist"} ); } 
-    
-    //test : is username and frien_username the same person ?
-    if ( username === friend_username ) { return res.status(400).json( { status : "400" , msg : "you cant be friends with yourself loser"} ); }
-
+    if ( !friend_ok ) { return res.status(404).json( { status : "404" , msg : "friend username doesn't exist"} ); }     
 
     // test : does friendship exist already?
     let exists;
-    try { exists = await Friendship.findOne( { username: username , friend : friend_username} ); }
+    try { exists = await Friendship.find( { username: username , friend : friend_username} ); }
     catch(error) { return res.status(500).json({ status : "500", msg : "can't connect to the database" }); }
 
-    if (exists) { return res.status(400).json( { status : "400", msg : "you are already friends" } ); }
+    if (exists !== []) { return res.status(400).json( { status : "400", msg : "you are already friends" } ); }
 
     // create a new friendship in the database
-    const newFriendship = new Friendship( { username: username, friend : friend_username } );
+    const newFriendship = new Friendship({ username: username, friend : friend_username });
 
     try { let ok = await newFriendship.save(); }
     catch(error) { return res.status(500).json( { status : "500" , msg : "can't connect to database"} ); }
@@ -134,4 +130,5 @@ export const deleteFriend = async(req,res,next) =>
 
     return res.status(200).json({ status : "200", msg : "Friend removed successfully" });
 }  
+
 
