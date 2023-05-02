@@ -1,0 +1,24 @@
+.user{
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+
+.username > span{
+    font-size: 15px;
+    color: black;
+
+}
+
+.button{
+    margin-left: auto;
+    cursor: pointer;
+
+}
+
+.avatar{
+   padding-right: 10px;
+}
+

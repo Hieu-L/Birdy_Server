@@ -1,0 +1,30 @@
+.people{
+    padding-top: 1rem;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--profileShadow);
+} 
+
+.people > div{
+    margin: 15px;
+
+}
+
+.people > hr{
+    width: 85%;
+    border: 1px solid #cfcdcd;
+}
+
+.people > span{
+    font-weight: bold;
+    color: var(--app-color);
+    margin-bottom: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    
+}

@@ -1,0 +1,76 @@
+/* ================Page=============== */
+.access{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    height: 100vh;
+    border: solid;
+    width: 100%;
+}
+
+.left{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 0.2;
+}
+
+.left > img{
+    width: 4rem;
+    height: 4rem;
+}
+
+.description > h1{
+    font-size: 2rem;
+    background-color: transparent;
+}
+
+.description > p{
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+
+/* ===================Form================= */
+.log {
+    padding: 1rem;
+    border-radius: 10px;
+    /* border : solid; */
+    box-shadow: var(--profileShadow);
+    width: 25rem;
+}
+
+
+.log > h2{
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+
+.log > form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+    gap: 1rem;
+ 
+}
+
+
+.log > form > input{
+    width: 100%;
+
+}
+
+.log > form > button{
+    width: 8rem;
+    
+}
+
+.log > button {
+    margin-left : 12px;
+}
+

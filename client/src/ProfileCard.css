@@ -1,0 +1,136 @@
+.profileCard{
+    /* border: solid; */
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 1rem;
+    overflow-x: clip;
+    box-shadow: var(--profileShadow);
+}
+
+.profilePageCard{
+    /* border: solid; */
+    /* border-bottom-left-radius: 1.5rem; */
+    /* border-bottom-right-radius: 1.5rem; */
+    max-width: 40rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    /* box-shadow: var(--profileShadow); */
+    padding-bottom: 10px;
+
+}
+
+/* ====================Profile Images=================== */
+.profilePics, .profilePicsP{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profilePics > img:nth-of-type(1) {
+    width: 100%;
+    height : 200px;
+    object-fit: cover;
+}
+
+.profilePicsP > img:nth-of-type(1) {
+    width: 100%;
+    max-height : 250px;
+    object-fit: cover;
+}
+
+
+.profilePics > img:nth-of-type(2) {
+    width: 6rem;
+    height: 6rem;
+    object-fit: cover;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -3rem;
+    box-shadow: var(--profileShadow);
+}
+
+.profilePicsP > img:nth-of-type(2) {
+    width: 6rem;
+    height: 6rem;
+    object-fit: cover;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -3rem;
+    box-shadow: var(--profileShadow);
+}
+
+
+/* =====================Profile Name================ */
+.profileName {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+    gap: 10px;
+}
+  
+.profileName > p:nth-of-type(1) {
+    font-weight: bold;
+}
+
+.profileName > p:nth-of-type(2){
+    color: grey;
+}
+  
+/* ================Follow Status================== */
+.followStat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.followStat > hr {
+    width: 85%;
+    border: 1px solid #cfcdcd;
+}
+
+.followStat > div {
+    display: flex;
+    gap: 1rem;
+    width: 80%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.follow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.follow > span:nth-of-type(1) {
+    font-weight: bold;
+}
+
+.follow > span:nth-of-type(2) {
+    color: rgba(36, 45, 73, 0.65);
+    font-size: 13px;
+}
+
+.vline{
+    border: 1px solid rgba(36, 45, 73, 0.65);
+    height: 35px;
+}
+
+ 
+.profile
+{
+    font-weight: bold;
+    color: var(--app-color);
+    align-self: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
