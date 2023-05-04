@@ -1,7 +1,11 @@
 import { useState } from "react";
-import React from 'react'
-import './Login.css'
-import bird from './bird1.jpg'
+import React from 'react';
+import './Login.css';
+import axios from 'axios';
+import bird from './bird1.jpg';
+
+axios.defaults.baseURL = 'http://localhost:3001';
+
 
 function Login(props) {
 
@@ -10,33 +14,20 @@ function Login(props) {
 
     const [error, setError] = useState(false);
 
-    const handleLogin = (e) => {
-        
-        // Prevent page reload
+
+    
+    const toMainPage = () => { props.onFormSwitch('app') }
+
+    const handleLogin = async(e) => {
         e.preventDefault();
+        const user = username;
+        const pass = password;
 
-        //Fetch data from server
-        fetch("api/user/signin", {
-            method: "POST",
-            body: JSON.stringify({ username, password }),
-            headers: { 'Content-Type': 'application/json' },
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-            } )
-            .catch((err) => {
-                setError(true)
-                console.error(err)
-                console.log(error)
-            } )
+        try{ await axios.post('/api/user/signin', { username : user, password : pass } ).then(res => { console.log(res.data); props.adminHandler(user); toMainPage(); }) }
+        catch(e) { setError(true) }
     }
 
-    const toMainPage = () => {
-        if (!error){
-            props.onFormSwitch('app')
-        }
-    }
+
 
     return (
         <div className="access">
@@ -68,7 +59,7 @@ function Login(props) {
                         onChange={(e) => setPassword(e.target.value)}
                     />
 
-                    <button type="submit" onClick={() => toMainPage()}>Log In</button>
+                    <button type="submit" onClick={() => handleLogin()}>Log In</button>
                 </form>
 
                 {error ? <div style={{color:"red"}}>Invalid username or invalid password</div> : ""}
