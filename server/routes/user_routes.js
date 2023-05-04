@@ -24,7 +24,7 @@ router.post("/signup", signUp);
 router.post("/signin", logIn);
 
 // [3] POST api/user/signin : find an existing User 
-router.delete("/api/user/logout", logOut);
+router.delete("logout", logOut);
 
 // [4] POST api/user/username/delete : delete an existing User 
 router.post("/id_:username/delete", deleteUser);
