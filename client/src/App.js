@@ -18,13 +18,13 @@ function App(props) {
     <div className="home">
 
       {/* {props.page === "ProfilePage" ? <Sidebar page="ProfilePage"/> : <Sidebar />} */}
-      <Sidebar onFormSwitch={(elem) => props.onFormSwitch(elem)} homeHandler={homeHandler}/>
+      <Sidebar onFormSwitch={(elem) => props.onFormSwitch(elem)} homeHandler={homeHandler} admin={props.admin}/>
       
       {/* Middle */}
       {/* {props.page === "ProfilePage" ? <Nest page="ProfilePage"/> : <Nest />} */}
       <Nest home={home}/> 
 
-      <PeopleCard homeHandler={homeHandler}/>
+      <PeopleCard homeHandler={homeHandler} admin={props.admin}/>
 
       {/* <MainPage /> */}
     </div>
