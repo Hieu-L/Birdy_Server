@@ -1,7 +1,11 @@
-import React from 'react'
-import { useState } from 'react'
-import './Signin.css'
-import bird from './bird1.jpg'
+import React from 'react';
+import { useState } from 'react';
+import './Signin.css';
+import bird from './bird1.jpg';
+import axios from 'axios';
+
+axios.defaults.baseURL = 'http://localhost:3001';
+
 
 function Signin(props) {
 
@@ -10,12 +14,27 @@ function Signin(props) {
     const [conf_password, setConf_Password] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [passOK, setPassOK] = useState(true);
+    const [error, setError] = useState(false);
 
 
-    const handleSubmission = (e) => {
-        if (password === conf_password) setPassOK(true);
-        else setPassOK(false);
+    const handleSubmission = async(e) => {
+        e.preventDefault();
+        const user = username;
+        const pass = password;
+
+        try{ await axios.post('/api/user/signup', { username:username, firstname:firstName, lastname:lastName, password:password, confirmpassword:conf_password } )
+        .then(res => { console.log(res.data); props.onFormSwitch('login'); }) }
+
+        catch(e) { setError(true) }
+    }
+
+    const resetHandler = (e) => {
+        setUsername("");
+        setPassword("");
+        setConf_Password("");
+        setFirstName("");
+        setLastName("");
+        setError(false);
     }
 
     return (
@@ -45,11 +64,11 @@ function Signin(props) {
 
                     <div className="btns">
                         <button onClick={handleSubmission}>Sign In</button>
-                        <button type="reset">Reset</button>
+                        <button type="reset" onClick={resetHandler}>Reset</button>
                     </div>
                     
 
-                    {passOK ? <p></p>:<p style={{color:"red"}}>Erreur: mots de passe différents</p>}
+                    {error ? <div style={{color:"red"}}>Invalid username or invalid password</div> : ""}
 
                 </form>
 
