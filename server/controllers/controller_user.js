@@ -1,5 +1,5 @@
 import User from "../model/User.js";
-
+import Friendship from "../model/Friendship.js";
 
 /* ======== get ALL USERS in the DATABASE ======== */
 
@@ -49,7 +49,7 @@ export const signUp = async(req,res,next) =>
 
 
 
-/* ======== FIND A USER in the DATABASE ======== */
+/* ======== LOGIN ======== */
 
 export const logIn = async(req,res,next) =>
 {
@@ -76,6 +76,8 @@ export const logIn = async(req,res,next) =>
     return res.status(200).json( { status : "200" , user_exist } );
 }
 
+/* ======== LOGOUT USER  ======== */
+
 export const logOut = async(req,res,next) => 
 {
     req.session.destroy((err) => { });
@@ -83,6 +85,22 @@ export const logOut = async(req,res,next) =>
     return res.status(200).json( { status : "200", msg : "logged out successfully" })
 }
 
+/* ======== FIND A USER in the DATABASE ======== */
+
+export const findUser = async(req,res,next) =>
+{
+    // retrieve info sent from client side
+    const username = req.params.username;
+    
+    // test : username exists ?
+    let user_exist ;
+    try { user_exist = await User.findOne({ username }); }
+    catch(error) { return res.status(500).json({ status : "500", msg : "can't connect to the database" }); }
+
+    if (! user_exist ) { return res.status(404).json( { status : "404" , msg : "username doesn't exist"} ); }
+
+    return res.status(200).json( { status : "200" , user_exist } );
+}
 
 /* ======== DELETE A USER in the DATABASE ======== */
 

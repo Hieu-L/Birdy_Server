@@ -5,7 +5,8 @@ import {
     signUp,
     logIn,
     logOut,
-    deleteUser
+    deleteUser,
+    findUser
 } 
 from '../controllers/controller_user.js';
 
@@ -23,10 +24,13 @@ router.post("/signup", signUp);
 // [3] POST api/user/signin : find an existing User 
 router.post("/signin", logIn);
 
-// [3] POST api/user/signin : find an existing User 
-router.delete("logout", logOut);
+// [4] POST api/user/logout : end session
+router.delete("/logout", logOut);
 
-// [4] POST api/user/username/delete : delete an existing User 
+// [5] POST api/user/id_username/delete : delete an existing User 
 router.post("/id_:username/delete", deleteUser);
+
+// [6] GET api/user/id_username
+router.get("/id_:username", findUser);
 
 export default router;

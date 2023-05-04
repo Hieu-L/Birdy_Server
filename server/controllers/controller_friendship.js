@@ -29,7 +29,7 @@ export const addFriend = async(req,res,next) =>
     try { exists = await Friendship.find( { username: username , friend : friend_username} ); }
     catch(error) { return res.status(500).json({ status : "500", msg : "can't connect to the database" }); }
 
-    if (exists !== []) { return res.status(400).json( { status : "400", msg : "you are already friends" } ); }
+    if (exists.length !== 0) { return res.status(400).json( { status : "400", msg : "you are already friends" } ); }
 
     // create a new friendship in the database
     const newFriendship = new Friendship({ username: username, friend : friend_username });
@@ -61,7 +61,13 @@ export const getListFriends = async(req,res,next) =>
     try { friendsList = await Friendship.find( { username: username } ); }
     catch(error) { return res.status(500).json({ status : "500", msg : "can't connect to the database" }); }
 
-    return res.status(200).json({ status : "200", friendsList });
+    let userList;
+    for (let i=0 ; i<friendsList.length; i++) {
+        var u = await User.findOne({username : friendsList[i].friend });
+        userList.push(u);
+    }
+
+    return res.status(200).json({ status : "200", userList });
 }
 
 
