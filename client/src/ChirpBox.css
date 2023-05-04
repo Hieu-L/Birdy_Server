@@ -1,6 +1,8 @@
 .chirpBox{
     padding-bottom: 10px;
     border-bottom: 8px solid var(--background);
+    border-top: 8px solid var(--background);
+
 }
 
 .profileChirp{

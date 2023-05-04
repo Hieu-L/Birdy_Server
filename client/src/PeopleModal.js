@@ -7,8 +7,6 @@ function PeopleModal(props) {
     const theme = useMantineTheme();
     return (
       <Modal
-        overlayOpacity={1}
-        overlayBlur={3}
         size="40%"
         opened={props.modalOpened}
         onClose={() => props.setModalOpened(false)}

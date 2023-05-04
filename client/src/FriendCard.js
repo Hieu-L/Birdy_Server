@@ -1,14 +1,12 @@
 import React from 'react'
 import User from './User'
-import { useState } from "react";
-import "./PeopleCard.css"
+import { useState } from 'react'
 import PeopleModal from './PeopleModal';
-import SearchIcon from '@mui/icons-material/Search';
 
-function People(props) {
+
+function FriendCard(props) {
 
     const [modalOpened, setModalOpened] = useState(false);
-    
 
     const [users, setUser] = useState(
         [
@@ -22,14 +20,12 @@ function People(props) {
     return (
 
         <div className='people'>
-            <h3>Make new friends !</h3>
-
-            <div className='searchbar'> 
-                <input type="text" placeholder="Explore"/>
-                <button className='btn'><SearchIcon /></button>
+            <h3>Your friends</h3>
+            
+            <div>
+                { users.map(u =><User homeHandler={(elem) => props.homeHandler(elem)} name={u.name} pic={u.pic} followStat={u.followStat}/>)}
             </div>
 
-            <div>{ users.map(u =><User homeHandler={(elem) => props.homeHandler(elem)} name={u.name} pic={u.pic} followStat={u.followStat}/>)}</div>
             <hr/>
             {props.page !== "modal" ? <span onClick={() => setModalOpened(true)}>Show more</span> : ""}
 
@@ -37,8 +33,9 @@ function People(props) {
                 modalOpened={modalOpened}
                 setModalOpened={setModalOpened}
             /> 
+
         </div>
     )
 }
 
-export default People
+export default FriendCard

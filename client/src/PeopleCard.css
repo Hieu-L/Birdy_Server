@@ -28,3 +28,23 @@
     margin-top: 1rem;
     
 }
+
+.searchbar{
+    display: flex;
+    border: solid;
+    /* margin: 10px */
+    /* justify-content: center; */
+}
+
+.searchbar > input{
+    width: 75%;
+    margin : 10px
+}
+
+.btn {
+    width : 60px;
+    align-items: center;
+    margin-left: auto;
+    margin : 10px
+
+}

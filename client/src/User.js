@@ -4,32 +4,20 @@ import './User.css'
 import Avatar from '@mui/material/Avatar';
 
 
-function User({name, pic, followStat}) {
-
-    const [following, setFollowing] = useState(false);
-
-    const handleFollow = () => {
-        following 
-            ? setFollowing(false)
-            : setFollowing(true)
-    }
-
+function User(props) {
 
     return (
         <div className="user">
             <div className="avatar">
-                <Avatar src={pic} alt="profile"/>
+                <Avatar src={props.pic} alt="profile"/>
             </div>
 
             <div className='username'>
-                <span>{name}</span>
+                <span>{props.name}</span>
             </div>
-
             
-            <button 
-                className= "button"
-                onClick = {handleFollow} >
-                <span className='text'>{following ? "Unfollow" : "Follow"}</span>
+            <button className= "button" onClick={() => props.homeHandler(props.name)}>
+                Check
             </button>
 
         </div>

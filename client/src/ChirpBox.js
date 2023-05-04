@@ -6,7 +6,7 @@ import AddPhoto from '@mui/icons-material/AddPhotoAlternateOutlined';
 
 function ChirpBox(props) {
   return (
-    <div className={props.page==="ProfilePage" ? "profileChirp" : "chirpBox"}>
+    <div className="chirpBox">
         <form>
             <div className='chirp_input'>
                 <Avatar alt="Profile Pic" src={props.name}></Avatar>

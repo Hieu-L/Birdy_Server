@@ -29,7 +29,7 @@ function Post({name, pseudo, text, image, pic}) {
                         <h3>
                             {name}{" "}
                             <span className='username'>@{pseudo}</span>
-                            <button className='follow-btn' onClick={handleFollow}>{following ? "Unfollow" : "Follow"} </button>
+                            {/* <button className='follow-btn' onClick={handleFollow}>{following ? "Unfollow" : "Follow"} </button> */}
                         </h3>
                     </div>
                     <div className='info_details'>

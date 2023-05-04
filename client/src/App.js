@@ -1,22 +1,30 @@
 import React from 'react';
 import Sidebar from './Sidebar';
 import Nest from './Nest';
+import { useState } from 'react';
 import './App.css';
-import MainPage from './MainPage';
+import PeopleCard from './PeopleCard'
 
-function App() {
+function App(props) {
+
+  const [home, setHome] = useState('explore')
+
+  const homeHandler = (pageName) => {
+    console.log(pageName);
+    setHome(pageName);
+  }
+
   return (
     <div className="home">
-      {/* Sidebar */}
-      <Sidebar page="ProfilePage"/>
-      {/* <Sidebar /> */}
 
-    
+      {/* {props.page === "ProfilePage" ? <Sidebar page="ProfilePage"/> : <Sidebar />} */}
+      <Sidebar onFormSwitch={(elem) => props.onFormSwitch(elem)} homeHandler={homeHandler}/>
+      
       {/* Middle */}
-      <Nest page="ProfilePage" />
-      {/* <Nest /> */}
+      {/* {props.page === "ProfilePage" ? <Nest page="ProfilePage"/> : <Nest />} */}
+      <Nest home={home}/> 
 
-      {/* Things on the right */}
+      <PeopleCard homeHandler={homeHandler}/>
 
       {/* <MainPage /> */}
     </div>

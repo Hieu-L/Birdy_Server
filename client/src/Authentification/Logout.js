@@ -3,7 +3,7 @@ import React from 'react'
 function Logout(props) {
   return (
     <div>
-        <button className='btn'>logout</button>
+        <button className='btn' onClick={() => props.onFormSwitch('login')}>logout</button>
     </div>
   )
 }

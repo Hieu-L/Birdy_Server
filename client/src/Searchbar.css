@@ -1,0 +1,19 @@
+.search{
+    display: flex;
+    border-bottom: 8px solid var(--background);
+    justify-content: center;
+
+}
+
+.search > input{
+    width: 75%;
+    margin : 10px
+}
+
+.btn {
+    width : 60px;
+    align-items: center;
+    margin-left: auto;
+    margin : 10px
+
+}

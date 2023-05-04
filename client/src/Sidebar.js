@@ -1,14 +1,12 @@
 import React from "react";
 import './Sidebar.css'
 import TwitterIcon from '@mui/icons-material/Twitter';
-// import SidebarOption from "./SidebarOption";
-// import HomeIcon from '@mui/icons-material/Home';
-// import SearchIcon from '@mui/icons-material/Search';
-// import NotificationsIcon from '@mui/icons-material/Notifications';
-// import Button from '@mui/material/Button';
 import ProfileCard from "./ProfileCard";
 import User from "./User"
 import PeopleCard from "./PeopleCard";
+import Logout from "./Authentification/Logout";
+import Profile from "./Profile";
+import FriendCard from "./FriendCard";
 
 
 
@@ -20,30 +18,19 @@ function Sidebar(props){
     const followers = "10"
     const following = "4"
 
-
     
     return (
         <div className="sidebar">
             {/* Birdy icon */}
-            <TwitterIcon className="birdyIcon"/>
+            <button onClick={() => props.homeHandler('explore')}><TwitterIcon className="birdyIcon"/></button>
             
-            {props.page === "ProfilePage" 
-                ? ""
-                : <ProfileCard name={name} pseudo={pseudo} cover={cover} pic={pic} followers={followers} following={following} page=""/>
-            }
+            <ProfileCard homeHandler={(elem) => props.homeHandler(elem)} name={name} pseudo={pseudo} cover={cover} pic={pic} followers={followers} following={following}/>
             
-            <PeopleCard />
-            {/* <User name={name} pic={pic} followStat={stat1}/>
-            <User name={name} pic={pic} followStat={stat2}/> */}
+            
+            <FriendCard homeHandler={(elem) => props.homeHandler(elem)}/>
 
-            {/* <SidebarOption active Icon = {HomeIcon} text = "Home"/>
-            <SidebarOption Icon = {SearchIcon} text = "Explore"/>
+            <Logout onFormSwitch={() => props.onFormSwitch('login')}/>
 
-            <SidebarOption Icon = {NotificationsIcon} text = "Notifications"/> */}
-
-
-            {/* Tweet button */}
-            {/* <Button variant="outlined" className="btn_tweet" fullWidth>Tweet</Button> */}
         </div>
     )
 }

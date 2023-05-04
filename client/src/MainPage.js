@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Signin from './Authentification/Signin';
 import App from './App';
 import Login from './Authentification/Login';
+import Profile from './Profile';
+
 
 
 function MainPage(props) {
@@ -11,10 +13,10 @@ function MainPage(props) {
         { username: "user2", password: "pass2" }
     ];
 
-    const [form, setForm] = useState('login');
+    const [page, setPage] = useState('login');
 
-    const formHandler = (formName) => {
-        setForm(formName);
+    const pageHandler = (pageName) => {
+        setPage(pageName);
     }
     // const[isConnected, setConnect] = useState(false);
     // // const[page, setPage] = useState("app_page");
@@ -33,10 +35,9 @@ function MainPage(props) {
             
             {/* {isConnected ? <App data={database} /> : <Access data={database} login={getConnected} isConnected={isConnected}/>} */}
 
-            { form === "login" ? <Login data={props.data} onFormSwitch={formHandler} /> : null}
-            { form === "sign_up" ? <Signin data={props.data} onFormSwitch={formHandler} /> : null}
-            { form === "app" ? <App data={props.data}/> : null}
-
+            { page === "login" ? <Login data={props.data} onFormSwitch={pageHandler} /> : null}
+            { page === "sign_up" ? <Signin data={props.data} onFormSwitch={pageHandler} /> : null}
+            { page === "app" ? <App data={props.data} onFormSwitch={pageHandler}/> : null}
 
         </div>
             

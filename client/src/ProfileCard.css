@@ -7,12 +7,12 @@
     gap: 1rem;
     overflow-x: clip;
     box-shadow: var(--profileShadow);
+    padding-bottom: 10px;
+    align-items: center;
+
 }
 
 .profilePageCard{
-    /* border: solid; */
-    /* border-bottom-left-radius: 1.5rem; */
-    /* border-bottom-right-radius: 1.5rem; */
     max-width: 40rem;
     display: flex;
     flex-direction: column;
@@ -133,4 +133,9 @@
     align-self: center;
     margin-bottom: 1rem;
     cursor: pointer;
+}
+
+.btn_profile {
+    width : 50%;
+    justify-content: center;
 }
