@@ -4,6 +4,7 @@ import "./Nest.css";
 import Post from './Post';
 import ProfileCard from './ProfileCard';
 import Searchbar from './Searchbar';
+import Wall from './Wall'
 
 function Explore(props) {
   const cover = "https://th.bing.com/th/id/R.e72cf06ab05a2cf5a76b50808cdb22ed?rik=UrdjpsagxDuafA&pid=ImgRaw&r=0"
@@ -26,9 +27,7 @@ function Explore(props) {
         <Searchbar />
 
         {/* Post */}
-        <Post name="Birdy No1" pseudo="BigBoyPiou" pic={pic} text="Any Piou Piou you want duh" image={pic}/>
-        <Post name="Birdy No1" pseudo="BigBoyPiou" pic="H" text="Any Piou Piou you want duh" image={pic}/>
-        <Post name="Birdy No1" pseudo="BigBoyPiou" pic="H" text="Any Piou Piou you want duh" image={pic}/>
+        <Wall />
 
 
     </div>

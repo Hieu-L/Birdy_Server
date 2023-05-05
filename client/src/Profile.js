@@ -2,6 +2,7 @@ import React from 'react'
 import "./ProfileCard.css"
 import ChirpBox from './ChirpBox'
 import Post from './Post'
+import Wall from './Wall'
 
 function Profile(props) {
 
@@ -49,9 +50,10 @@ function Profile(props) {
           <ChirpBox page={props.page}/>
 
           {/* Post */}
-          <Post name="Birdy No1" pseudo="BigBoyPiou" pic={props.pic} text="Any Piou Piou you want duh" image={props.pic}/>
+          {/* <Post name="Birdy No1" pseudo="BigBoyPiou" pic={props.pic} text="Any Piou Piou you want duh" image={props.pic}/>
           <Post name="Birdy No1" pseudo="BigBoyPiou" pic="H" text="Any Piou Piou you want duh" image={props.pic}/>
-          <Post name="Birdy No1" pseudo="BigBoyPiou" pic="H" text="Any Piou Piou you want duh" image={props.pic}/>
+          <Post name="Birdy No1" pseudo="BigBoyPiou" pic="H" text="Any Piou Piou you want duh" image={props.pic}/> */}
+          <Wall />
             
         </div>
     )
