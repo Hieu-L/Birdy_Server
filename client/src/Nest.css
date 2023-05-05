@@ -1,6 +1,7 @@
 .nest{
     flex: 0.5;
     border-right: 1px solid var(--background);
+    border-left: 1px solid var(--background);
     min-width: fit-content;
     overflow-y: scroll;
 }
