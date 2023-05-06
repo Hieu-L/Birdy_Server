@@ -61,9 +61,37 @@ export const getListFriends = async(req,res,next) =>
     try { friendsList = await Friendship.find( { username: username } ); }
     catch(error) { return res.status(500).json({ status : "500", msg : "can't connect to the database" }); }
 
-    let userList;
+    let userList = [];
     for (let i=0 ; i<friendsList.length; i++) {
         var u = await User.findOne({username : friendsList[i].friend });
+        userList.push(u);
+    }
+
+    return res.status(200).json({ status : "200", userList });
+}
+
+/* ======== get ALL FRIENDS OF USER in the DATABASE ======== */
+
+export const getListFans = async(req,res,next) =>
+{
+    const username = req.params.username;
+    let friendsList;
+
+    // test : does username exist?
+    let username_ok;
+    try { username_ok = await User.findOne( {username : username} ); }
+    catch(error) { return res.status(500).json({ status : "500", msg : "can't connect to the database" }); }
+
+    if ( !username_ok ) { return res.status(404).json( { status : "404" , msg : "username doesn't exist"} ); } 
+
+    // get list of friends
+
+    try { friendsList = await Friendship.find( { friend: username } ); }
+    catch(error) { return res.status(500).json({ status : "500", msg : "can't connect to the database" }); }
+
+    let userList = [];
+    for (let i=0 ; i<friendsList.length; i++) {
+        var u = await User.findOne({username : friendsList[i].username });
         userList.push(u);
     }
 

@@ -53,7 +53,7 @@ export const getAllMessage = async(req,res,next) =>
 {
     let messages ;
     
-    try { messages = await Message.find( { author : username } ); }
+    try { messages = await Message.find( {} ); }
     catch(error) { return res.status(500).json( { status : "500" , msg : "can't connect to database"} ); }
 
     return res.status(200).json( { status : "200", messages } );
