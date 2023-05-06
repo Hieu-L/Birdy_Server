@@ -22,7 +22,7 @@ function App(props) {
       
       {/* Middle */}
       {/* {props.page === "ProfilePage" ? <Nest page="ProfilePage"/> : <Nest />} */}
-      <Nest home={home}/> 
+      <Nest admin={props.admin} home={home}/> 
 
       <PeopleCard homeHandler={homeHandler} admin={props.admin}/>
 

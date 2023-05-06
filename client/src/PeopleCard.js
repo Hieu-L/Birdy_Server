@@ -1,6 +1,6 @@
 import React from 'react'
 import User from './User'
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import "./PeopleCard.css"
 import PeopleModal from './PeopleModal';
 import axios from 'axios';
@@ -14,11 +14,12 @@ function People(props) {
     const [users, setUsers] = useState([]);
     const [filter, setFilter] = useState("");
 
-
-    try { 
-        axios.get('/api/user/all')
-        .then(res => { const listusers = res.data.users; setUsers(listusers) }) 
-    }   catch(e) { console.log("error getting all users") }
+    useEffect( () => {
+        try { 
+            axios.get('/api/user/all')
+            .then(res => { const listusers = res.data.users; setUsers(listusers) }) 
+        }   catch(e) { console.log("error getting all users") }
+    },[])
 
     const handleButton = () =>{
         setModalOpened(true)
@@ -46,6 +47,7 @@ function People(props) {
 
             <PeopleModal
                 card={card}
+                homeHandler={(elem) => props.homeHandler(elem)}
                 modalOpened={modalOpened}
                 setModalOpened={setModalOpened}
             /> 

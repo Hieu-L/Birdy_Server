@@ -1,18 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ChirpBox from './ChirpBox';
 import "./Nest.css";
-import Post from './Post';
-import ProfileCard from './ProfileCard';
+import { useState } from 'react';
+import axios from 'axios';
 import Searchbar from './Searchbar';
-import Wall from './Wall'
+import Wall from './Wall';
+
+axios.defaults.baseURL = 'http://localhost:3001';
 
 function Explore(props) {
-  const cover = "https://th.bing.com/th/id/R.e72cf06ab05a2cf5a76b50808cdb22ed?rik=UrdjpsagxDuafA&pid=ImgRaw&r=0"
   const pic = "https://cdn.pixabay.com/photo/2017/08/01/15/03/bird-2566116__480.jpg"
-  const name = "Birdy No1"
-  const pseudo = "BigBoyPiou"
-  const followers = "10"
-  const following = "4"
+
+  const [posts, setPost] = useState(
+    [
+        {name: "Hugo Victor", pic: pic, image:pic},
+        {name: "Hugo Victooooooor", pic: pic, image:pic},
+        {name: "Zola Émile", pic: pic, image:pic},
+        {name: "IDK YOU", pic:"", image:""}
+    ]
+  )
+
+  useEffect( () => {
+    try 
+    {
+      axios.get("/apimessages/user/messages")
+      .then( (res) => { let tmp = res.data.messages ; setPost(tmp) } )
+    } catch(e) { console.log("error loading posts for Explore") }
+  }, [posts])
+
+
  
   return (
     <div className="nest">
@@ -22,13 +38,12 @@ function Explore(props) {
         </div>
 
         {/* ChirpBox : To make a new Post*/}
-        <ChirpBox page={props.page}/>
+        <ChirpBox admin={props.admin} page={props.page} postHandler={(elem) => setPost(current => [...current, elem])}/>
 
         <Searchbar />
 
-        {/* Post */}
-        <Wall />
-
+        <Wall posts={posts} pic={pic} image={pic}/>
+       
 
     </div>
   )

@@ -82,60 +82,26 @@
     color: grey;
 }
   
-/* ================Follow Status================== */
-.followStat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-}
-
-.followStat > hr {
-    width: 85%;
-    border: 1px solid #cfcdcd;
-}
-
-.followStat > div {
-    display: flex;
-    gap: 1rem;
-    width: 80%;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.follow {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.follow > span:nth-of-type(1) {
-    font-weight: bold;
-}
-
-.follow > span:nth-of-type(2) {
-    color: rgba(36, 45, 73, 0.65);
-    font-size: 13px;
-}
 
 .vline{
     border: 1px solid rgba(36, 45, 73, 0.65);
     height: 35px;
 }
 
- 
-.profile
-{
-    font-weight: bold;
-    color: var(--app-color);
-    align-self: center;
-    margin-bottom: 1rem;
-    cursor: pointer;
-}
 
 .btn_profile {
     width : 50%;
     justify-content: center;
+    margin-bottom: 1rem;
+    background-color: var(--app-color);
+    border: none;
+    border-radius: 8px;
+    padding: 5px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 100ms;
+    cursor: pointer;
 }
+
+

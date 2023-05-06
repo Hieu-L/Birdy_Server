@@ -21,7 +21,7 @@ function ProfileCard(props) {
               <p>@{props.pseudo}</p>
             </div>
 
-            <button className='btn_profile' onClick={() => props.homeHandler(props.name)} >My profile</button>
+            <button className='btn_profile' onClick={() => props.homeHandler(props.pseudo)} >My profile</button>
  
         </div>
     )

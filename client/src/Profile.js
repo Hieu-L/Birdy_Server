@@ -1,13 +1,15 @@
 import React from 'react'
 import "./ProfileCard.css"
-import ChirpBox from './ChirpBox'
-import Post from './Post'
 import Wall from './Wall'
+
+
+
 
 function Profile(props) {
 
  
     const defaultpic = "https://th.bing.com/th/id/R.72ad85d65b52a367ebb66f5466a8556b?rik=dwT4CZMz5GX7gA&pid=ImgRaw&r=0"
+    const pic = "https://cdn.pixabay.com/photo/2017/08/01/15/03/bird-2566116__480.jpg"
 
     return (
         <div className= "profilePageCard">
@@ -25,7 +27,7 @@ function Profile(props) {
                 <hr />
                 <div>
                     <div className='follow'>
-                        <span>{props.followers}</span>
+                        <span>{props.follower}</span>
                         <span>Followers</span>
                     </div>
 
@@ -39,7 +41,7 @@ function Profile(props) {
                     <div className="vline"></div>
                     
                     <div className='follow'>
-                      <span>12</span>
+                      <span>{ props.posts.length }</span>
                       <span>Posts</span>
                     </div>
                 </div>
@@ -47,14 +49,11 @@ function Profile(props) {
                 <div></div>
             </div>
 
-          <ChirpBox page={props.page}/>
+            {props.posts.length === 0
+                ? <div className='profileName'> This Bird hasn't chirped yet  </div>
+                : <Wall posts={props.posts} pic={pic} image={pic}/>
+            }
 
-          {/* Post */}
-          {/* <Post name="Birdy No1" pseudo="BigBoyPiou" pic={props.pic} text="Any Piou Piou you want duh" image={props.pic}/>
-          <Post name="Birdy No1" pseudo="BigBoyPiou" pic="H" text="Any Piou Piou you want duh" image={props.pic}/>
-          <Post name="Birdy No1" pseudo="BigBoyPiou" pic="H" text="Any Piou Piou you want duh" image={props.pic}/> */}
-          <Wall />
-            
         </div>
     )
 }

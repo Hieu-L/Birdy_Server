@@ -1,6 +1,6 @@
 import React from 'react'
 import User from './User'
-import { useState } from 'react'
+import { useState , useEffect } from 'react'
 import PeopleModal from './PeopleModal';
 import './FriendCard.css'
 import axios from 'axios';
@@ -15,11 +15,12 @@ function FriendCard(props) {
     const [users, setUsers] = useState([]);
     const [filter, setFilter] = useState("");
 
-
-    try { 
-        axios.get('/api/user/all')
-        .then(res => { const listusers = res.data.users; setUsers(listusers) }) 
-    }   catch(e) { console.log("error getting all users") }
+    useEffect( () => {
+        try { 
+            axios.get('/api/user/all')
+            .then(res => { const listusers = res.data.users; setUsers(listusers) }) 
+        }   catch(e) { console.log("error getting all users") }
+    }, [users] )
 
     const handleButton = () =>{
         setModalOpened(true)
@@ -48,6 +49,7 @@ function FriendCard(props) {
                 card={card}
                 modalOpened={modalOpened}
                 setModalOpened={setModalOpened}
+                homeHandler={(elem) => props.homeHandler(elem)}
             /> 
         </div>
 

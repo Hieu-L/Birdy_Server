@@ -17,8 +17,7 @@ axios.defaults.baseURL = 'http://localhost:3001';
 function Sidebar(props){
     const cover = "https://th.bing.com/th/id/R.e72cf06ab05a2cf5a76b50808cdb22ed?rik=UrdjpsagxDuafA&pid=ImgRaw&r=0"
     const pic = "https://cdn.pixabay.com/photo/2017/08/01/15/03/bird-2566116__480.jpg"
-    const followers = "10"
-    const following = "4"
+
 
     const [name, setName] = useState("");
     const [pseudo, setPseudo] = useState(props.admin);
@@ -37,14 +36,16 @@ function Sidebar(props){
     return (
         <div className="sidebar">
             {/* Birdy icon */}
-            <button onClick={() => props.homeHandler('explore')}><TwitterIcon className="birdyIcon"/></button>
+            <button className="birdyIcon" onClick={() => props.homeHandler('explore')}><TwitterIcon /></button>
             
-            <ProfileCard homeHandler={(elem) => props.homeHandler(elem)} name={name} pseudo={pseudo} cover={cover} pic={pic} followers={followers} following={following}/>
+            <ProfileCard homeHandler={(elem) => props.homeHandler(elem)} name={name} pseudo={pseudo} cover={cover} pic={pic} />
             
             
             <FriendCard homeHandler={(elem) => props.homeHandler(elem)}/>
 
+            <div className="logout">
             <Logout onFormSwitch={() => props.onFormSwitch('login')}/>
+            </div>
 
         </div>
     )

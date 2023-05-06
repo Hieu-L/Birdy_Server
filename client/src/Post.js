@@ -8,7 +8,7 @@ import FavoriteIcon from '@mui/icons-material/FavoriteBorderOutlined';
 
 
 
-function Post(props) {
+function Post({name, pseudo, text, image, pic}) {
     
     const [following, setFollowing] = useState(false);
 
@@ -21,23 +21,23 @@ function Post(props) {
     return (
         <div className='post'> 
             <div className='post_pic'>
-                <Avatar src={props.pic} />
+                <Avatar src={pic} />
             </div>
             <div className='post_body'>
                 <div className='post_info'>
                     <div className='info_text'>
                         <h3>
-                            {props.name}{" "}
-                            <span className='username'>@{props.pseudo}</span>
+                            {name}{" "}
+                            <span className='username'>@{pseudo}</span>
                             {/* <button className='follow-btn' onClick={handleFollow}>{following ? "Unfollow" : "Follow"} </button> */}
                         </h3>
                     </div>
                     <div className='info_details'>
-                        <p>{props.text}</p>
+                        <p>{text}</p>
                     </div>
                 </div>
         
-                <img src={props.image}/>
+                <img src={image}/>
                 <div className='icons'>
                     <FavoriteIcon fontSize='small' />
                     <ChatIcon fontSize='small' />

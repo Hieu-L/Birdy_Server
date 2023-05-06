@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import LogoutIcon from '@mui/icons-material/Logout';
+import "./Logout.css"
 
 
 axios.defaults.baseURL = 'http://localhost:3001';
@@ -17,7 +19,9 @@ function Logout(props) {
 
   return (
     <div>
-        <button className='btn' onClick={() => handleLogout()}>logout</button>
+        <button className='logout_btn'onClick={() => handleLogout()}>
+          <LogoutIcon />Logout
+        </button>
     </div>
   )
 }
