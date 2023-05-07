@@ -17,8 +17,8 @@ function FriendCard(props) {
 
     useEffect( () => {
         try { 
-            axios.get('/api/user/all')
-            .then(res => { const listusers = res.data.users; setUsers(listusers) }) 
+            axios.get('/apifriends/user/id_'+props.admin+'/friends')
+            .then(res => { const listusers = res.data.userList; setUsers(listusers) }) 
         }   catch(e) { console.log("error getting all users") }
     }, [users] )
 
@@ -31,7 +31,7 @@ function FriendCard(props) {
     return (
 
         <div className={ props.page !=="modal" ? "friend" : "modalFriend"}>
-            <h3> My friends </h3>
+            <h3> Who I Follow </h3>
 
             <div className='searchfriend'> 
                 <input type="text" placeholder="Explore" onChange={(e) => setFilter(e.target.value)}/>
@@ -46,6 +46,7 @@ function FriendCard(props) {
             {props.page !== "modal" ? <span onClick={() => handleButton()}>Show more</span> : ""}
 
             <PeopleModal
+                admin = {props.admin}
                 card={card}
                 modalOpened={modalOpened}
                 setModalOpened={setModalOpened}

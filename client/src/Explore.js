@@ -42,7 +42,7 @@ function Explore(props) {
 
         <Searchbar />
 
-        <Wall posts={posts} pic={pic} image={pic}/>
+        <Wall posts={posts} pic={pic} image={pic} modifiable={false}/>
        
 
     </div>

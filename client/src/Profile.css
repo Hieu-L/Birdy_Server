@@ -72,6 +72,7 @@
     width: 80%;
     justify-content: space-around;
     align-items: center;
+
 }
 
 .follow {
@@ -105,7 +106,26 @@
     cursor: pointer;
 }
 
-.btn {
-    width : 50%;
-    justify-content: center;
+.btn-follow {
+    width: 20%;
+    background-color: var(--app-color);
+    border: none;
+    padding: 5px 15px 5px 15px;
+    text-align: center;
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-unfollow {
+    width: 20%;
+    background-color: #85b8d8;
+    border: none;
+    padding: 5px 15px 5px 15px;
+    text-align: center;
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 600;
 }

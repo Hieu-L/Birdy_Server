@@ -2,10 +2,7 @@ import React from "react";
 import './Sidebar.css'
 import TwitterIcon from '@mui/icons-material/Twitter';
 import ProfileCard from "./ProfileCard";
-import User from "./User"
-import PeopleCard from "./PeopleCard";
 import Logout from "./Authentification/Logout";
-import Profile from "./Profile";
 import FriendCard from "./FriendCard";
 import axios from 'axios';
 import { useState } from "react";
@@ -41,7 +38,7 @@ function Sidebar(props){
             <ProfileCard homeHandler={(elem) => props.homeHandler(elem)} name={name} pseudo={pseudo} cover={cover} pic={pic} />
             
             
-            <FriendCard homeHandler={(elem) => props.homeHandler(elem)}/>
+            <FriendCard admin={pseudo} homeHandler={(elem) => props.homeHandler(elem)}/>
 
             <div className="logout">
             <Logout onFormSwitch={() => props.onFormSwitch('login')}/>

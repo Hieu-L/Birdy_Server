@@ -6,7 +6,7 @@ function Wall(props) {
 
     return (
         <div>
-            <div>{ props.posts.map(u =><Post name={u.author} pic={props.pic} image={props.image} pseudo={u.author} text={u.text}/>)}</div>
+            <div>{ props.posts.map(u =><Post modifiable={props.modifiable} changeHandler={() => props.changeHandler()} id={u._id} name={u.author} pic={props.pic} image={props.image} pseudo={u.author} text={u.text}/>)}</div>
         </div>
     )
 }

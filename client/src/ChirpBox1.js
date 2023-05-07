@@ -4,15 +4,12 @@ import Avatar from '@mui/material/Avatar';
 import AddPhoto from '@mui/icons-material/AddPhotoAlternateOutlined';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import ImageModal from "./ImageModal"
 
 axios.defaults.baseURL = 'http://localhost:3001';
 
 function ChirpBox(props) {
 
   const [message, setMessage] = useState("");
-  const [image, setImage] = useState("");
-  const [modalOpened, setModalOpened] = useState(false);
 
   const uploadPost = async() => {
     try{
@@ -21,11 +18,6 @@ function ChirpBox(props) {
         res => { let tmp = res.data.newMessage; props.postHandler(tmp) }
       )
     } catch(err) { console.log("error uploading Post") }
-  }
-
-  const addImage = () => {
-    setModalOpened(true);
-
   }
 
 
@@ -38,18 +30,10 @@ function ChirpBox(props) {
             </div>
 
             <div className='add'>
-              <div> { image } </div>
-              <button type="button" className='add-btn' onClick={() => addImage()}><AddPhoto/> Image </button>
+              <button type="submit" className='add-btn' onClick={() => 1+1}><AddPhoto/> Image </button>
               <button type="button" onClick={() => uploadPost()}>Chirp</button>
             </div>
         </form>
-
-        <ImageModal
-          modalOpened={modalOpened}
-          setModalOpened={setModalOpened}
-          setImage={setImage}
-        /> 
-
     </div>
   )
 }

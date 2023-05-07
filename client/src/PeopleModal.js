@@ -12,7 +12,7 @@ function PeopleModal(props) {
           onClose={() => props.setModalOpened(false)}
         >
         
-        {props.card === "people" ? <PeopleCard page='modal' homeHandler={(elem) => props.homeHandler(elem)}/> : <FriendCard page='modal' homeHandler={(elem) => props.homeHandler(elem)}/> }
+        {props.card === "people" ? <PeopleCard page='modal' homeHandler={(elem) => props.homeHandler(elem)}/> : <FriendCard admin={props.admin} page='modal' homeHandler={(elem) => props.homeHandler(elem)}/> }
         
         </Modal>
       );

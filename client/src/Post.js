@@ -4,11 +4,13 @@ import './Post.css';
 import Avatar from '@mui/material/Avatar';
 import ChatIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import FavoriteIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import axios from 'axios';
+import { filterProps } from '@mantine/core';
+
+axios.defaults.baseURL = 'http://localhost:3001';
 
 
-
-
-function Post({name, pseudo, text, image, pic}) {
+function Post({name, pseudo, text, image, pic, id, modifiable, changeHandler}) {
     
     const [following, setFollowing] = useState(false);
 
@@ -16,6 +18,15 @@ function Post({name, pseudo, text, image, pic}) {
         following 
             ? setFollowing(false)
             : setFollowing(true)
+    }
+
+    const removeHandler = async() => {
+        try {
+            await axios.delete("/apimessages/user/id_"+id).then(
+                res => { console.log(res.data) ; changeHandler(); }
+            )
+        }
+        catch(e) { console.log("error deleting post "+id) }
     }
 
     return (
@@ -41,6 +52,10 @@ function Post({name, pseudo, text, image, pic}) {
                 <div className='icons'>
                     <FavoriteIcon fontSize='small' />
                     <ChatIcon fontSize='small' />
+                    { modifiable 
+                        ?  <button type="button" onClick={removeHandler}> Delete </button>
+                        : ""
+                    }
                 </div>      
             </div>
         </div>

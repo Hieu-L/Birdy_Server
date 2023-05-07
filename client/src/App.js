@@ -5,9 +5,12 @@ import { useState } from 'react';
 import './App.css';
 import PeopleCard from './PeopleCard'
 
+
 function App(props) {
 
   const [home, setHome] = useState('explore')
+
+  const [friendChange, setFriendChange] = useState(0);
 
   const homeHandler = (pageName) => {
     console.log(pageName);
@@ -22,7 +25,7 @@ function App(props) {
       
       {/* Middle */}
       {/* {props.page === "ProfilePage" ? <Nest page="ProfilePage"/> : <Nest />} */}
-      <Nest admin={props.admin} home={home}/> 
+      <Nest friendHandler = { () => setFriendChange(previous => previous + 1) } admin={props.admin} home={home} /> 
 
       <PeopleCard homeHandler={homeHandler} admin={props.admin}/>
 
