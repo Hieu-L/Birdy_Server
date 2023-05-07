@@ -1,0 +1,66 @@
+.chirpBox{
+    padding-bottom: 10px;
+    border-bottom: 8px solid var(--background);
+    border-top: 8px solid var(--background);
+    background-color: white;
+}
+
+.profileChirp{
+    margin-top: 2rem;
+    border-top: 8px solid var(--background);
+    border-bottom: 8px solid var(--background);
+
+}
+
+.chirpBox, .profileChirp > form{
+    display: flex;
+    flex-direction: column;
+}
+
+.chirp_input{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.chirp_input > input{
+    flex:1;
+    margin-left: 20px;
+    font-size: 18px;
+    border-color: var(--background);
+    border: none !important;
+    background-color: var(--background);
+    padding : 10px;
+
+}
+
+.btn_chirp{
+    background-color: var(--app-color) ;
+    color: white;
+    font-weight: 800 ;
+    text-transform: inherit ;
+    border-radius: 30px ;
+    height: 40px;
+    width: 80px;
+    border: none;
+    cursor: pointer;
+
+}
+
+.add{
+    color: var(--app-color);
+    align-items: center;
+    display: flex;
+    margin-left: 400px ;
+    margin-bottom: 10px;
+    gap: 1rem
+}
+
+.add-btn{
+    border : none;
+    background-color: transparent;
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+    cursor: pointer;
+}

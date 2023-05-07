@@ -1,0 +1,26 @@
+.search{
+    display: flex;
+    border-bottom: 8px solid var(--background);
+    justify-content: center;
+    background-color: white;
+
+}
+
+.search > input{
+    width: 75%;
+    margin : 10px
+}
+
+.btn {
+    width : 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin : 10px; 
+    border-radius: 8px;
+    border : none;
+    color: #ffffff;
+    background-color: gray;
+    padding: 5px
+}

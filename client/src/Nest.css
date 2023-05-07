@@ -1,0 +1,30 @@
+.nest{
+    flex: 0.5;
+    border-right: 1px solid var(--background);
+    border-left: 1px solid var(--background);
+    /* min-width: fit-content; */
+    min-width : 640px;
+    max-width: 640px;
+    overflow-y: scroll;
+    background-color:white;
+}
+
+/* Hide the scrollbar */
+.nest::-webkit-scrollbar{
+    display: none;
+}
+
+.nest_head{
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+    border: 1px solid var(--background);
+    padding: 15px 20px;
+}
+
+.nest_head > h2 {
+    font-size: 20px;
+    font-weight: 800;
+    /* background-color: var(--background); */
+}

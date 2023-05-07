@@ -1,0 +1,71 @@
+/* ================Page=============== */
+.access{
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+    gap: 2rem;
+    height: 100vh;
+    background-image: url('background.jpg');
+}
+
+
+
+/* ===================Form================= */
+.sign {
+    padding: 5rem;
+    border-radius: 10px;
+    box-shadow: var(--profileShadow);
+    width: 25rem;
+    background-color: white;
+}
+
+
+.sign > h2{
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+
+.sign > form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+    gap: 1rem;
+ 
+}
+
+
+.sign > form > input{
+    width: 100%;
+
+}
+
+.btns {
+    display: flex;
+    gap: 2rem;
+}
+
+.btns > button{
+    width: 8rem;
+    width: 8rem;
+    border-radius: 8px;
+    border: none;
+    padding: 5px;
+    background-color: var(--app-color);
+    color: #ffffff;
+    cursor: pointer;
+
+}
+
+.sign > button {
+    margin-left : 12px;
+    margin-left : 12px;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+
+}
+

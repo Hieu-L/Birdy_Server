@@ -1,0 +1,21 @@
+.logout_btn{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--app-color);
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 2rem;
+
+
+    /* display: inline-block; */
+
+}
+
+

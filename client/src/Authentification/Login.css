@@ -1,0 +1,69 @@
+/* ================Page=============== */
+.access{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    height: 100vh;
+    border: solid;
+    width: 100%;
+    background-image: url('./background.jpg');
+    
+}
+
+
+
+/* ===================Form================= */
+.log {
+    padding: 5rem;
+    border-radius: 10px;
+    /* border : solid; */
+    box-shadow: var(--profileShadow);
+    width: 25rem;
+    background-color: white;
+}
+
+
+.log > h2{
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+
+.log > form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+    gap: 1rem;
+ 
+}
+
+
+.log > form > input{
+    width: 100%;
+
+}
+
+.log > form > button{
+    width: 8rem;
+    border-radius: 8px;
+    border: none;
+    padding: 5px;
+    background-color: var(--app-color);
+    color: #ffffff;
+    cursor: pointer;
+    
+}
+
+.log > button {
+    margin-left : 12px;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+
+
+}
+

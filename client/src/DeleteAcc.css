@@ -1,0 +1,12 @@
+.delete-acc-btn{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    padding: 10px;
+    font-size: 15px;
+    background-color: rgb(231, 9, 9);
+    color: #ffffff;
+    font-weight: 600;
+    border-radius:8px;
+    border: none;
+}
