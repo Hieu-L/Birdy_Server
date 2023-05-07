@@ -7,16 +7,16 @@ import { ObjectId } from "mongoose";
 export const createMessage = async(req,res,next) => 
 {
     const username = req.params.username;
-    const { author, date, text } = req.body;
+    const { author, image, text } = req.body;
 
     // test : does username exist?
     let username_ok;
     try { username_ok = await User.findOne( { username : username} ); }
     catch(error) { return res.status(500).json({ status : "500", msg : "can't connect to the database" }); }
 
-    if ( !author || !date || !text ) { return res.status(400).json( { status : "400" , msg : "missing information"} ); } 
+    if ( !author || !text ) { return res.status(400).json( { status : "400" , msg : "missing information"} ); } 
     
-    const newMessage = new Message( { author, date, text } );
+    const newMessage = new Message( { author, image, text } );
 
     try { let ok = await newMessage.save(); }
     catch(error) { return res.status(500).json( { status : "500" , msg : "can't connect to database"} ); }

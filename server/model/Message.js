@@ -29,9 +29,8 @@ const messageSchema = ({
         required : true 
     } ,
 
-    date : {
+    image : {
         type : String,
-        required : true
     },
     
     // the text of the message

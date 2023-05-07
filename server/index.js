@@ -34,7 +34,7 @@ mongoose
     /* start listening to port 8000 : msg to and from the server will pass thru here */
     .then( ()=>app.listen(3001,'localhost') )
 
-    .then( ()=>console.log("\n we...are...listening...on port 8000... 0-0 \n"))
+    .then( ()=>console.log("\n we...are...listening...on port 3001... 0-0 \n"))
 
     /* catch in case of failure to connect to Mongodb OR to listen on 8000 */
     .catch( (error) => console.log("can't start the server => " + error) ) 
