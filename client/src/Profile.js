@@ -82,8 +82,8 @@ function Profile(props) {
             {props.posts.length === 0
                 ? <div className='profileName'> This Bird hasn't chirped yet  </div>
                 :  props.pseudo == props.admin 
-                    ? <Wall changeHandler={() => props.changeHandler()} posts={props.posts} pic={pic} image={pic} modifiable={true}/>
-                    : <Wall changeHandler={() => props.changeHandler()} posts={props.posts} pic={pic} image={pic} modifiable={false}/>
+                    ? <Wall changeHandler={() => props.changeHandler()} posts={props.posts} pic={pic} modifiable={true}/>
+                    : <Wall changeHandler={() => props.changeHandler()} posts={props.posts} pic={pic} modifiable={false}/>
                 
             }
 

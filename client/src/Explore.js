@@ -13,12 +13,14 @@ function Explore(props) {
 
   const [posts, setPost] = useState(
     [
-        {name: "Hugo Victor", pic: pic, image:pic},
-        {name: "Hugo Victooooooor", pic: pic, image:pic},
-        {name: "Zola Émile", pic: pic, image:pic},
-        {name: "IDK YOU", pic:"", image:""}
+        {author: "Hugo Victor", text: "sdfs", image:pic},
+        {author: "Hugo Victooooooor", text: "sdfs", image:pic},
+        {author: "Zola Émile", text: "sdfs", image:pic},
+        {author: "IDK YOU", text: "sdfs", image:""}
     ]
   )
+
+  const [filter, setFilter] = useState("");
 
   useEffect( () => {
     try 
@@ -40,9 +42,9 @@ function Explore(props) {
         {/* ChirpBox : To make a new Post*/}
         <ChirpBox admin={props.admin} page={props.page} postHandler={(elem) => setPost(current => [...current, elem])}/>
 
-        <Searchbar />
+        <Searchbar filterHandler={ (elem) => setFilter(elem) }/>
 
-        <Wall posts={posts} pic={pic} image={pic} modifiable={false}/>
+        <Wall posts={posts.filter( post => (post.text.includes(filter) || post.author.includes(filter)) )} pic={pic} modifiable={false}/>
        
 
     </div>

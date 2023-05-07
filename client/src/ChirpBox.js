@@ -17,7 +17,7 @@ function ChirpBox(props) {
   const uploadPost = async() => {
     try{
       console.log(props.admin)
-      await axios.post("/apimessages/user/id_"+props.admin+"/messages", { author: props.admin, date: "05/05/2023", text: message } ).then(
+      await axios.post("/apimessages/user/id_"+props.admin+"/messages", { author: props.admin, image: image, text: message } ).then(
         res => { let tmp = res.data.newMessage; props.postHandler(tmp) }
       )
     } catch(err) { console.log("error uploading Post") }
@@ -38,7 +38,7 @@ function ChirpBox(props) {
             </div>
 
             <div className='add'>
-              <div> { image } </div>
+              { image !== "" ? <div>{ image + ".jpg" }</div> : "" } 
               <button type="button" className='add-btn' onClick={() => addImage()}><AddPhoto/> Image </button>
               <button type="button" onClick={() => uploadPost()}>Chirp</button>
             </div>

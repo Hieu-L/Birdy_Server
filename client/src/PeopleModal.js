@@ -7,7 +7,7 @@ import FriendCard from './FriendCard';
 function PeopleModal(props) {
       return (
         <Modal
-          size="40%"
+          size="300px"
           opened={props.modalOpened}
           onClose={() => props.setModalOpened(false)}
         >

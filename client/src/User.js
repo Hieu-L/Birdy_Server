@@ -13,7 +13,7 @@ function User(props) {
             </div>
 
             <div className='username'>
-                <span>{props.name}</span>
+                <span title={props.name}>{props.name}</span>
             </div>
             
             <button className= "button" onClick={() => props.homeHandler(props.name)}>

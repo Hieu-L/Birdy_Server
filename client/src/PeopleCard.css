@@ -16,6 +16,7 @@
 
 } 
 
+
 .people > div{
     margin: 5px;
     /* border: solid; */
@@ -53,4 +54,26 @@
     align-items: center;
     margin-left: auto;
     margin : 10px
+}
+
+
+/* ================ Modal ===============*/
+.modalPeople{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;  */
+}
+
+.modalPeople > h3{
+    text-align: center;
+}
+
+.modalPeople > .searchpeople {
+    /* border: solid; */
+    padding-bottom: 10px;
+}
+
+.modalPeople > .searchpeople > input{
+    width: 100%;
+    margin-top: 10px;
 }
