@@ -1,5 +1,6 @@
 import User from "../model/User.js";
 import Friendship from "../model/Friendship.js";
+import Message from "../model/Message.js";
 
 /* ======== get ALL USERS in the DATABASE ======== */
 
@@ -109,7 +110,6 @@ export const deleteUser = async(req,res,next) =>
     // retrieve info sent from client side
     const username = req.params.username;
     
-    console.log(username);
     // test : username exists ?
     let user_exist ;
     try { user_exist = await User.findOne({ username }); }
@@ -118,6 +118,12 @@ export const deleteUser = async(req,res,next) =>
     if (! user_exist ) { return res.status(404).json( { status : "404" , msg : "username doesn't exist"} ); }
     
     try { let ok = await User.deleteOne({ username : username }); }
+    catch(error) { return res.status(500).json({ status : "500", msg : "can't connect to the database" }); }
+
+    try { let ok = await Friendship.deleteMany({ username }); }
+    catch(error) { return res.status(500).json({ status : "500", msg : "can't connect to the database" }); }
+
+    try { let ok = await Message.deleteMany({ author : username }); }
     catch(error) { return res.status(500).json({ status : "500", msg : "can't connect to the database" }); }
 
     return res.status(200).json( { status : "200" , msg : "account deleted successfully" } );
