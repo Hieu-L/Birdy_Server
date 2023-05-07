@@ -127,8 +127,8 @@ export const getFriendRelationship = async(req,res,next) =>
     try { isFriends = await Friendship.findOne( { username: username , friend : friend_username } ); }
     catch(error) { return res.status(500).json({ status : "500", msg : "can't connect to the database" }); }
 
-    if (isFriends) { return res.status(200).json({ status : "200", msg : "True" }); }
-    else { return res.status(200).json({ status : "200", msg : "False" }); }
+    if (isFriends) { return res.status(200).json({ status : "200", msg : true }); }
+    else { return res.status(200).json({ status : "200", msg : false }); }
 }
 
 export const deleteFriend = async(req,res,next) =>
@@ -152,14 +152,11 @@ export const deleteFriend = async(req,res,next) =>
     
 
     // test : does this friendship between username and friend_username exist?
-    let isFriends; 
+    
+    console.log(username)
+    console.log(friend_username)
 
-    try { isFriends = await Friendship.findOne( { username: username , friend : friend_username } ); }
-    catch(error) { return res.status(500).json({ status : "500", msg : "can't connect to the database" }); }
-
-    if (!isFriends) { return res.status(400).json( { status : "400", msg : "this friendship doesn't exist" } ); }
-
-    try { let ok = Friendship.deleteOne({username : username, friend_username : friend_username}); }
+    try { let ok = await Friendship.deleteOne({username : username, friend : friend_username}); }
     catch(error) { return res.status(500).json({ status : "500", msg : "can't connect to the database" }); }
 
     return res.status(200).json({ status : "200", msg : "Friend removed successfully" });

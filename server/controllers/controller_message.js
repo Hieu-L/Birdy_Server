@@ -1,5 +1,6 @@
 import Message from "../model/Message.js";
 import User from "../model/User.js";
+import { ObjectId } from "mongoose";
 
 /* ======== create a MESSAGE in the DATABASE ======== */
 
@@ -65,9 +66,10 @@ export const getAllMessage = async(req,res,next) =>
 
 export const deleteMessage = async(req,res,next) => 
 {
-    const id = req.params.id ; 
+    const id = req.params.messageid ; 
+    console.log(id);
 
-    try { let ok = await Message.findOneAndDelete( { author : id } ); }
+    try { let ok = await Message.deleteOne( { _id :  id } ); }
     catch(error) { return res.status(500).json( { status : "500" , msg : "can't connect to database"} ); }
 
     return res.status(200).json( { status : "200", msg : "Deleted successfully"} );
