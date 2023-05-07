@@ -34,12 +34,12 @@ import what from "./mood/what.png";
 import yay from "./mood/yay.png";
 import yes_sir from "./mood/yes_sir.png";
 
+
 axios.defaults.baseURL = 'http://localhost:3001';
 
 
 function Post({name, pseudo, text, image, pic, id, modifiable, changeHandler}) {
     
-    const [following, setFollowing] = useState(false);
     let imageList = [ [angry,"angry"] , [bored, "bored"], [bye,"bye"], [crying,"crying"], [depressed,"depressed"], [eating,"eating"], [encouraging,"encouraging"], [full,"full"], [funny,"funny"], [hungry,"hungry"], [love,"love"], [money,"money"], [no,"no"], [not_talking,"not_talking"], [ok,"ok"], [pose,"pose"], [scared,"scared"], [sexy,"sexy"], [shocked,"shocked"], [sick,"sick"], [sleeping,"sleeping"], [stop_it,"stop_it"], [what,"what"], [yay,"yay"], [yes_sir,"yes_sir"]]
     
     let img;
@@ -47,11 +47,6 @@ function Post({name, pseudo, text, image, pic, id, modifiable, changeHandler}) {
         if (imageList[i][1] === image) { img = imageList[i][0]; break; }
     }
 
-    const handleFollow = () => {
-        following 
-            ? setFollowing(false)
-            : setFollowing(true)
-    }
 
     const removeHandler = async() => {
         try {

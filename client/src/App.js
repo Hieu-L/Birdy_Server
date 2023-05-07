@@ -3,8 +3,7 @@ import Sidebar from './Sidebar';
 import Nest from './Nest';
 import { useState } from 'react';
 import './App.css';
-import PeopleCard from './PeopleCard'
-
+import RightBar from './RightBar';
 
 function App(props) {
 
@@ -27,7 +26,7 @@ function App(props) {
       {/* {props.page === "ProfilePage" ? <Nest page="ProfilePage"/> : <Nest />} */}
       <Nest friendHandler = { () => setFriendChange(previous => previous + 1) } admin={props.admin} home={home} /> 
 
-      <PeopleCard homeHandler={homeHandler} admin={props.admin}/>
+      <RightBar onFormSwitch={(elem) => props.onFormSwitch(elem)} homeHandler={homeHandler} admin={props.admin}/>
 
       {/* <MainPage /> */}
     </div>

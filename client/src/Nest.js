@@ -45,7 +45,7 @@ function Nest(props) {
         )
         .then( res => { 
             const tmp = res.data.messages; 
-            setPosts(tmp)  }
+            setPosts(tmp);  }
         ) 
         .then( () => axios.get("/api/user/id_"+props.home) 
         )

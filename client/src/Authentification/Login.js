@@ -59,11 +59,11 @@ function Login(props) {
                         onChange={(e) => setPassword(e.target.value)}
                     />
 
-                    <button type="submit" onClick={() => handleLogin()}>Log In</button>
+                    <button type="submit" onClick={(e) => handleLogin(e)}>Log In</button>
                 </form>
 
                 {error ? <div style={{color:"red"}}>Invalid username or invalid password</div> : ""}
-                <button type="submit" onClick={() => props.onFormSwitch('sign_up')}> Don't have an account? Register here.</button>
+                <button type="button" onClick={() => props.onFormSwitch('sign_up')}> Don't have an account? Register here.</button>
             </div>
         </div>
       );

@@ -40,7 +40,7 @@ function ChirpBox(props) {
             <div className='add'>
               { image !== "" ? <div>{ image + ".jpg" }</div> : "" } 
               <button type="button" className='add-btn' onClick={() => addImage()}><AddPhoto/> Image </button>
-              <button type="button" onClick={() => uploadPost()}>Chirp</button>
+              <button className='btn_chirp' type="button" onClick={() => uploadPost()}>Chirp</button>
             </div>
         </form>
 
